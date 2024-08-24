@@ -1,4 +1,4 @@
-""" Standards of writing Selenium tests in Framework """
+""" Standards of writing Selenium tests in Framework and implementing POM """
 
 from selenium import webdriver
 
