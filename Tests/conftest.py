@@ -4,11 +4,13 @@ from selenium.webdriver.chrome.service import Service
 import time
 driver = None
 
+"""Service class sees what version of Chromedriver is installed in the local and runs the Chrome browser accordingly, It
+makes runtime faster as Selenium manager doesn't need to identify what version of Chromedriver needs to be installed."""
 
 @pytest.fixture(scope="class")
 def setup(request):
     global driver
-    browser_name=request.config.getoption("browser_name")
+    browser_name = request.config.getoption("browser_name")
     options = webdriver.ChromeOptions()
     options.add_experimental_option("detach", True)
 
@@ -29,8 +31,11 @@ def setup(request):
     driver.get("https://rahulshettyacademy.com/angularpractice/")
     driver.maximize_window()
 
-    request.cls.driver = driver
+    # passing driver obj from the class to the request instance and returning the driver obj
+    request.cls.driver = driver # passing driver from the fixture to the TC
+
     yield
     driver.close()
+    # return driver (This method will not work as the yeild statement is present)
 
 
