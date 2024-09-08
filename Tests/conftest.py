@@ -1,11 +1,16 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-import time
+# import time
 driver = None
 
 """Service class sees what version of Chromedriver is installed in the local and runs the Chrome browser accordingly, It
 makes runtime faster as Selenium manager doesn't need to identify what version of Chromedriver needs to be installed."""
+
+def pytest_addoption(parser):
+    parser.addoption(
+        "--browser_name", action="store", default="chrome"
+    )
 
 @pytest.fixture(scope="class")
 def setup(request):
@@ -32,7 +37,7 @@ def setup(request):
     driver.maximize_window()
 
     # passing driver obj from the class to the request instance and returning the driver obj
-    request.cls.driver = driver # passing driver from the fixture to the TC
+    request.cls.driver = driver  # passing driver from the fixture to the TC
 
     yield
     driver.close()

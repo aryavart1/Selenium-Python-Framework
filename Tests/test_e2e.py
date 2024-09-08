@@ -1,21 +1,18 @@
 """ Standards of writing Selenium tests in Framework and implementing POM """
 
-import pytest
-
-from selenium import webdriver
-
 # chrome driver
-from selenium.webdriver.chrome.service import Service
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+from Tests.utilities.BaseClass import BaseClass
 
-@pytest.mark.usefixtures("setup")
-class TestOne:
 
-    def test_e2e(self, setup):
+# @pytest.mark.usefixtures("setup")
+class TestOne(BaseClass):
+
+    def test_e2e(self):
 
         self.driver.find_element(By.CSS_SELECTOR, "a[href*='shop']").click()
 
