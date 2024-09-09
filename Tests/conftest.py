@@ -14,6 +14,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="class")
 def setup(request):
+
     global driver
     browser_name = request.config.getoption("browser_name")
     options = webdriver.ChromeOptions()
@@ -24,7 +25,6 @@ def setup(request):
         driver = webdriver.Chrome(options=options, service=service_obj)
 
     elif browser_name == "firefox":
-
         service_obj = Service()
         driver = webdriver.Firefox(options=options, service=service_obj)
 
