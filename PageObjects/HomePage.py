@@ -1,10 +1,11 @@
 from selenium.webdriver.common.by import By
 
-from pageObjects.CheckoutPage import CheckOutPage
+# from pageObjects.CheckoutPage import CheckOutPage
 
 
 class HomePage:
 
+    # creating constructor to pass the driver
     def __init__(self, driver):
         self.driver = driver
 
@@ -19,7 +20,8 @@ class HomePage:
     # Using (*) before class variable deserializes your tuple
 
     def shopItems(self):
-        self.driver.find_element(*HomePage.shop).click() # class variable (class_name.variable_name)
+        # self.driver.find_element(By.CSS_SELECTOR, "a[href*='shop']").click()
+        return self.driver.find_element(*HomePage.shop).click() # class variable (class_name.variable_name)
         checkOutPage = CheckOutPage(self.driver)
         return checkOutPage
 

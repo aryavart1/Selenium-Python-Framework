@@ -1,20 +1,27 @@
 """ Standards of writing Selenium tests in Framework and implementing POM """
 
-# chrome driver
+
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 from Tests.utilities.BaseClass import BaseClass
+from PageObjects.HomePage import HomePage
 
 
 # @pytest.mark.usefixtures("setup")
+
+
+
 class TestOne(BaseClass):
 
     def test_e2e(self):
 
-        self.driver.find_element(By.CSS_SELECTOR, "a[href*='shop']").click()
+        homepage = HomePage(self.driver)
+
+        homepage.shopItems().click()
+
 
         products = self.driver.find_elements(By.XPATH, "//div[@class='card h-100']")
 
