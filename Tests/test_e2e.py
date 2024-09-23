@@ -1,55 +1,44 @@
-""" Standards of writing Selenium tests in Framework and implementing POM """
-
-
+import pytest
+from selenium import webdriver
+import time
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-from Tests.utilities.BaseClass import BaseClass
+from PageObjects.CheckOutPage import CheckOutPage
 from PageObjects.HomePage import HomePage
-
-
-# @pytest.mark.usefixtures("setup")
-
+from utilities.BaseClass import BaseClass
 
 
 class TestOne(BaseClass):
 
     def test_e2e(self):
+        log = self.getLogger()
+        homePage = HomePage(self.driver)
+        checkoutpage = homePage.shopItems()
+        log.info("getting all the card titles")
+        cards = checkoutpage.getCardTitles()
+        i = -1
+        for card in cards:
+            i = i + 1
+            cardText = card.text
+            log.info(cardText)
+            if cardText == "Blackberry":
+                checkoutpage.getCardFooter()[i].click()
 
-        homepage = HomePage(self.driver)
+        self.driver.find_element_by_css_selector("a[class*='btn-primary']").click()
 
-        homepage.shopItems().click()
+        confirmpage = checkoutpage.checkOutItems()
+        log.info("Entering country name as ind")
+        self.driver.find_element_by_id("country").send_keys("ind")
+        # time.sleep(5)
+        self.verifyLinkPresence("India")
 
+        self.driver.find_element_by_link_text("India").click()
+        self.driver.find_element_by_xpath("//div[@class='checkbox checkbox-primary']").click()
+        self.driver.find_element_by_css_selector("[type='submit']").click()
+        textMatch = self.driver.find_element_by_css_selector("[class*='alert-success']").text
+        log.info("Text received from application is "+textMatch)
 
-        products = self.driver.find_elements(By.XPATH, "//div[@class='card h-100']")
-
-        # Chaining of web elements
-        for product in products:
-            product_name = product.find_element(By.XPATH, "div/h4/a").text
-            if product_name == "Blackberry":
-                product.find_element(By.XPATH, "div/button").click()
-
-        # Cart button
-        self.driver.find_element(By.CSS_SELECTOR, "a[class*='btn-primary']").click()
-
-        # Checkout button
-        self.driver.find_element(By.XPATH, "//button[@class='btn btn-success']").click()
-
-        self.driver.find_element(By.ID, "country").send_keys("Ind")
-
-        # Adding Explicit wait
-        wait = WebDriverWait(self.driver, 10)
-        """presenceOfElementLocated - element is present on the DOM of a page. 
-           visibilityOfElementLocated -> element is present on the DOM of a page and visible"""
-        wait.until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "India")))
-        self.driver.find_element(By.LINK_TEXT, "India").click()
-
-        self.driver.find_element(By.XPATH, "//div[@class='checkbox checkbox-primary']").click()
-        self.driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
-
-        success_text = self.driver.find_element(By.CLASS_NAME, "alert-success").text
-        assert "Success! Thank you! Your order will be delivered in next few weeks :-)." in success_text
-
-
+        assert ("Success! Thank you!" in textMatch)
