@@ -37,10 +37,15 @@ def setup(request):
     driver.maximize_window()
 
     # passing driver obj from the class to the request instance and returning the driver obj
+
+    """ passing local driver from fixture to the class driver, if the class uses this fixture in that class if there is
+    a driver variable than the local driver will be assigned to it"""
+
     request.cls.driver = driver  # passing driver from the fixture to the TC
 
+    # return driver (This method will not work as the yeild statement is present)
     yield
     driver.close()
-    # return driver (This method will not work as the yeild statement is present)
+
 
 

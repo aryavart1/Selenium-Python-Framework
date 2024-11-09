@@ -12,7 +12,7 @@ class HomePage:
     name = (By.CSS_SELECTOR, "[name='name']")
     email = (By.NAME, "email")
     check = (By.ID, "exampleCheck1")
-    gender= (By.ID, "exampleFormControlSelect1")
+    gender = (By.ID, "exampleFormControlSelect1")
     submit = (By.XPATH, "//input[@value='Submit']")
     successMessage = (By.CSS_SELECTOR, "[class*='alert-success']")
 

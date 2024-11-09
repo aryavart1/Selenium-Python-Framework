@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from pageObjects.ConfirmPage import ConfirmPage
+from PageObjects.ConfirmPage import ConfirmPage
 
 
 class CheckOutPage:
