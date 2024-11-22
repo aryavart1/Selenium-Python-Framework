@@ -8,6 +8,7 @@ class HomePage:
     def __init__(self, driver):
         self.driver = driver
 
+    # Step 1 -> Creating object (var = locator)
     shop = (By.CSS_SELECTOR, "a[href*='shop']")
     name = (By.CSS_SELECTOR, "[name='name']")
     email = (By.NAME, "email")
@@ -16,6 +17,7 @@ class HomePage:
     submit = (By.XPATH, "//input[@value='Submit']")
     successMessage = (By.CSS_SELECTOR, "[class*='alert-success']")
 
+    # Calling the created Objects into methods
     def shopItems(self):
         self.driver.find_element(*HomePage.shop).click()
         checkOutPage = CheckOutPage(self.driver)
