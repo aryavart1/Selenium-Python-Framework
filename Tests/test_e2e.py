@@ -15,6 +15,8 @@ class TestOne(BaseClass):
 
     def test_e2e(self):
         log = self.getLogger()
+
+        # sending driver as an argument
         homePage = HomePage(self.driver)
         checkoutpage = homePage.shopItems()
         log.info("getting all the card titles")

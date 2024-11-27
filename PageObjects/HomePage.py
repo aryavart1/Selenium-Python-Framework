@@ -19,6 +19,8 @@ class HomePage:
 
     # Calling the created Objects into methods
     def shopItems(self):
+        # adding * before class variable to deserialize a tuple
+        # calling class variables
         self.driver.find_element(*HomePage.shop).click()
         checkOutPage = CheckOutPage(self.driver)
         return checkOutPage
