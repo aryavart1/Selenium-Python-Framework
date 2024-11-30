@@ -5,7 +5,10 @@ from PageObjects.CheckOutPage import CheckOutPage
 
 class HomePage:
 
+
+    # creating constructor to accept driver argument
     def __init__(self, driver):
+        # Assigning the actual driver to the local class driver
         self.driver = driver
 
     # Step 1 -> Creating object (var = locator)
