@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from PageObjects.CheckOutPage import CheckOutPage
+from PageObjects.checkOutPage import checkOutPage
 from PageObjects.HomePage import HomePage
 from utilities.BaseClass import BaseClass
 
@@ -17,21 +17,21 @@ class TestOne(BaseClass):
         log = self.getLogger()
 
         # creating homepage obj to pass driver as an argument
-        homePage = HomePage(self.driver)
-        checkoutpage = homePage.shopItems()
+        home_page = HomePage(self.driver)
+        check_out_page = home_page.shopItems()
         log.info("getting all the card titles")
-        cards = checkoutpage.getCardTitles()
+        cards = check_out_page.getCardTitles()
         i = -1
         for card in cards:
             i = i + 1
             cardText = card.text
             log.info(cardText)
             if cardText == "Blackberry":
-                checkoutpage.getCardFooter()[i].click()
+                check_out_page.getCardFooter()[i].click()
 
         self.driver.find_element_by_css_selector("a[class*='btn-primary']").click()
 
-        confirmpage = checkoutpage.checkOutItems()
+        confirmpage = check_out_page.checkOutItems()
         log.info("Entering country name as ind")
         self.driver.find_element_by_id("country").send_keys("ind")
         # time.sleep(5)
