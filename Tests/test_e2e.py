@@ -37,6 +37,8 @@ class TestOne(BaseClass):
         log.info("Entering country name as ind")
         self.driver.find_element_by_id("country").send_keys("ind")
         # time.sleep(5)
+
+
         self.verifyLinkPresence("India")
 
         self.driver.find_element_by_link_text("India").click()
