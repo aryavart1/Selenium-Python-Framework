@@ -7,11 +7,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 """
+import time
 
-from PageObjects.CheckOutPage import CheckOutPage
+from selenium.webdriver.common.by import By
+
 from PageObjects.HomePage import HomePage
 from utilities.BaseClass import BaseClass
-
+from selenium.webdriver.common.action_chains import ActionChains
 
 class TestOne(BaseClass):
 
@@ -31,20 +33,29 @@ class TestOne(BaseClass):
             if cardText == "Blackberry":
                 check_out_page.getCardFooter()[i].click()
 
-        self.driver.find_element_by_css_selector("a[class*='btn-primary']").click()
+        time.sleep(2)
+
+        self.driver.find_element(By.CSS_SELECTOR, "a[class*='btn-primary']").click()
+
+
+
 
         confirmpage = check_out_page.checkOutItems()
         log.info("Entering country name as ind")
-        self.driver.find_element_by_id("country").send_keys("ind")
-        # time.sleep(5)
 
+        self.driver.find_element(By.ID, "country").send_keys("ind")
+        # time.sleep(5)
 
         self.verifyLinkPresence("India")
 
-        self.driver.find_element_by_link_text("India").click()
-        self.driver.find_element_by_xpath("//div[@class='checkbox checkbox-primary']").click()
-        self.driver.find_element_by_css_selector("[type='submit']").click()
-        textMatch = self.driver.find_element_by_css_selector("[class*='alert-success']").text
-        log.info("Text received from application is "+textMatch)
+        self.driver.find_element(By.LINK_TEXT, "India").click()
+        self.driver.find_element(By.XPATH, "//div[@class='checkbox checkbox-primary']").click()
+        self.driver.find_element(By.CSS_SELECTOR, "[type='submit']").click()
 
-        assert ("Success! Thank you!" in textMatch)
+        text_match = self.driver.find_element(By.CSS_SELECTOR, "[class*='alert-success']").text
+        log.info(f"Text received from application is {text_match}")
+
+        assert "Success! Thank you!" in text_match
+
+
+

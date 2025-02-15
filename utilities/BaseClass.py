@@ -7,6 +7,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 
+
 # Using base class to create custom utilities
 @pytest.mark.usefixtures("setup")
 class BaseClass:

@@ -1,11 +1,8 @@
-
-from selenium.webdriver.support.select import Select
-from selenium import webdriver
 import pytest
 
 from TestData.HomePageData import HomePageData
-from pageObjects.HomePage import HomePage
-from utilities.BaseClass import BaseClass
+from PageObjects.HomePage import HomePage
+from utilities import BaseClass
 
 
 class TestHomePage(BaseClass):
