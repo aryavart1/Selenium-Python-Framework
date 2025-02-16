@@ -6,3 +6,8 @@
 2025-02-15 18:08:12,357 :INFO : test_e2e :Entering country name as ind
 2025-02-15 18:08:17,999 :INFO : test_e2e :Text received from application is ×
 Success! Thank you! Your order will be delivered in next few weeks :-).
+2025-02-15 18:22:58,658 :INFO : test_e2e :getting all the card titles
+2025-02-15 18:22:58,718 :INFO : test_e2e :iphone X
+2025-02-15 18:22:58,736 :INFO : test_e2e :Samsung Note 8
+2025-02-15 18:22:58,754 :INFO : test_e2e :Nokia Edge
+2025-02-15 18:22:58,772 :INFO : test_e2e :Blackberry
