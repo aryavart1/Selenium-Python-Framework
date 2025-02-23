@@ -8,14 +8,14 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 """
 import time
-
+import unittest
 from selenium.webdriver.common.by import By
 
 from PageObjects.HomePage import HomePage
 from utilities.BaseClass import BaseClass
-from selenium.webdriver.common.action_chains import ActionChains
+# from selenium.webdriver.common.action_chains import ActionChains
 
-class TestOne(BaseClass):
+class TestOne(BaseClass, unittest.TestCase):
 
     def test_e2e(self):
         log = self.getLogger()
@@ -38,9 +38,8 @@ class TestOne(BaseClass):
         self.driver.find_element(By.CSS_SELECTOR, "a[class*='btn-primary']").click()
 
 
+        confirm_page = check_out_page.checkOutItems()
 
-
-        confirmpage = check_out_page.checkOutItems()
         log.info("Entering country name as ind")
 
         self.driver.find_element(By.ID, "country").send_keys("ind")
@@ -59,3 +58,5 @@ class TestOne(BaseClass):
 
 
 
+if __name__ == "__main__":
+    unittest.main()

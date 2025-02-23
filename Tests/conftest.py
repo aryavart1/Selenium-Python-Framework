@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-# import time
+# from selenium.webdriver.chrome.service import Service
+import time
 driver = None
 
 """Service class sees what version of Chromedriver is installed in the local and runs the Chrome browser accordingly, It
@@ -11,7 +11,6 @@ def pytest_addoption(parser):
     parser.addoption(
         "--browser_name", action="store", default="chrome"
     )
-
 @pytest.fixture(scope="class")
 def setup(request):
 
@@ -21,17 +20,19 @@ def setup(request):
     options.add_experimental_option("detach", True)
 
     if browser_name == "chrome":
-        service_obj = Service()
-        driver = webdriver.Chrome(options=options, service=service_obj)
+        options = webdriver.ChromeOptions()
+        # options.add_experimental_option("detach", True)
+        driver = webdriver.Chrome(options=options)
+
 
     elif browser_name == "firefox":
-        service_obj = Service()
-        driver = webdriver.Firefox(options=options, service=service_obj)
+        options = webdriver.FirefoxOptions()
+        driver = webdriver.Firefox(options=options)
 
-    elif browser_name == "IE":
 
-        service_obj = Service()
-        driver = webdriver.Edge(options=options, service=service_obj)
+    elif browser_name == "edge":
+        options = webdriver.EdgeOptions()
+        driver = webdriver.Edge(options=options)
 
     driver.get("https://rahulshettyacademy.com/angularpractice/")
     driver.maximize_window()
