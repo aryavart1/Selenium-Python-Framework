@@ -23,16 +23,19 @@ def setup(request):
         options = webdriver.ChromeOptions()
         # options.add_experimental_option("detach", True)
         driver = webdriver.Chrome(options=options)
+        driver.implicitly_wait(5)
 
 
     elif browser_name == "firefox":
         options = webdriver.FirefoxOptions()
         driver = webdriver.Firefox(options=options)
+        driver.implicitly_wait(5)
 
 
     elif browser_name == "edge":
         options = webdriver.EdgeOptions()
         driver = webdriver.Edge(options=options)
+        driver.implicitly_wait(5)
 
     driver.get("https://rahulshettyacademy.com/angularpractice/")
     driver.maximize_window()
@@ -45,6 +48,7 @@ def setup(request):
     request.cls.driver = driver  # passing driver from the fixture to the TC
 
     # return driver (This method will not work as the yeild statement is present)
+    # usinf
     yield
     driver.close()
 
