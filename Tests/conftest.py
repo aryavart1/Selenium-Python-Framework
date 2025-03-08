@@ -48,7 +48,7 @@ def setup(request):
     request.cls.driver = driver  # passing driver from the fixture to the TC
 
     # return driver (This method will not work as the yeild statement is present)
-    # usinf
+    # usin
     yield
     driver.close()
 
