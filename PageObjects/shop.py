@@ -15,8 +15,8 @@ class ShopPage(BrowserUtils):
 
     def add_product_to_cart(self, product_name):
 
-        self.driver.find_element( *self.shop_link ).click()
-        products = self.driver.find_elements( *self.product_cards )
+        self.driver.find_element(*self.shop_link).click()
+        products = self.driver.find_elements(*self.product_cards)
 
         for product in products:
             productName = product.find_element( By.XPATH, "div/h4/a" ).text

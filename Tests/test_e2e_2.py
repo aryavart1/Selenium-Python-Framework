@@ -12,7 +12,7 @@ import sys
 import pytest
 from selenium import webdriver
 
-sys.path.append( os.path.dirname( os.path.dirname( os.path.abspath( __file__ ) ) ) )
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 #chrome driver
 from selenium.webdriver.chrome.service import Service
@@ -36,8 +36,8 @@ def test_e2e(browserInstance, test_list_item):
     driver = browserInstance
     loginPage = LoginPage(driver)
     print(loginPage.getTitle())
-    shop_page = loginPage.login( test_list_item["userEmail"], test_list_item["userPassword"] )
-    shop_page.add_product_to_cart( test_list_item["productName"] )
+    shop_page = loginPage.login(test_list_item["userEmail"], test_list_item["userPassword"])
+    shop_page.add_product_to_cart(test_list_item["productName"])
     print( shop_page.getTitle())
     checkout_confirmation = shop_page.goToCart()
     checkout_confirmation.checkout()
