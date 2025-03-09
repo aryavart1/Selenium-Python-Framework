@@ -25,8 +25,8 @@ from PageObjects.login import LoginPage
 from PageObjects.shop import ShopPage
 
 test_data_path = '../data/test_e2eTestFramework.json'
-with open( test_data_path ) as f:
-    test_data = json.load( f )
+with open(test_data_path) as f:
+    test_data = json.load(f)
     test_list = test_data["data"]
 
 

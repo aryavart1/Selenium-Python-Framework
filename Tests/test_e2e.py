@@ -16,7 +16,6 @@ from utilities.BaseClass import BaseClass
 # from selenium.webdriver.common.action_chains import ActionChains
 
 class TestOne(BaseClass, unittest.TestCase):
-
     def test_e2e(self):
         log = self.getLogger()
 
