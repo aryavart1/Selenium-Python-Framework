@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from PageObjects.shop import ShopPage
-from utils.browserutils import BrowserUtils
+from utilities.browserutils import BrowserUtils
 
 
 class LoginPage(BrowserUtils):

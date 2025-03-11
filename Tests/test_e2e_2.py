@@ -6,6 +6,7 @@
 
 
 import json
+# import unittest
 import os
 import sys
 
@@ -33,8 +34,8 @@ with open(test_data_path) as f:
 
 @pytest.mark.smoke
 @pytest.mark.parametrize("test_list_item", test_list)  # fixture picks single item from the list
-def test_e2e(browserInstance, test_list_item):
-    driver = browserInstance
+def test_e2e(test_list_item, browser_instance):
+    driver = browser_instance
     loginPage = LoginPage(driver)
     print(loginPage.getTitle())
     shop_page = loginPage.login(test_list_item["userEmail"], test_list_item["userPassword"])

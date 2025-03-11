@@ -57,17 +57,34 @@ def setup(request):
 
 
 @pytest.fixture(scope="function")
-def browserInstance(request):
-    global driver
-    browser_name = request.config.getoption( "browser_name" )
-    service_obj = Service()
-    if browser_name == "chrome":  #firefox
-        driver = webdriver.Chrome( service=service_obj )
-    elif browser_name == "firefox":
-        driver = webdriver.Firefox( service=service_obj )
+def browser_instance(request):
 
-    driver.implicitly_wait( 5 )
-    driver.get( "https://rahulshettyacademy.com/loginpagePractise/" )
+    global driver
+    browser_name = request.config.getoption("browser_name")
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option("detach", True)
+
+    if browser_name == "chrome":
+        options = webdriver.ChromeOptions()
+        # options.add_experimental_option("detach", True)
+        driver = webdriver.Chrome(options=options)
+        driver.implicitly_wait(5)
+
+
+    elif browser_name == "firefox":
+        options = webdriver.FirefoxOptions()
+        driver = webdriver.Firefox(options=options)
+        driver.implicitly_wait(5)
+
+
+    elif browser_name == "edge":
+        options = webdriver.EdgeOptions()
+        driver = webdriver.Edge(options=options)
+        driver.implicitly_wait(5)
+
+    driver.get("https://rahulshettyacademy.com/loginpagePractise/")
+    driver.maximize_window()
+
     yield driver  #Before test function execution
     driver.close()  #post your test function execution
 

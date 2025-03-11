@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from utils.browserutils import BrowserUtils
+from utilities.browserutils import BrowserUtils
 
 
 class Checkout_Confirmation(BrowserUtils):
