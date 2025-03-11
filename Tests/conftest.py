@@ -56,7 +56,7 @@ def setup(request):
 
 
 
-@pytest.fixture( scope="function" )
+@pytest.fixture(scope="function")
 def browserInstance(request):
     global driver
     browser_name = request.config.getoption( "browser_name" )
