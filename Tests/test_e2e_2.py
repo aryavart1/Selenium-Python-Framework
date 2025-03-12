@@ -32,7 +32,7 @@ with open(test_data_path) as f:
     test_list = test_data["data"]  # for accessing the data inside the mentioned key
 
 
-@pytest.mark.smoke
+@pytest.mark.smoke  # pytest -m smkoke
 @pytest.mark.parametrize("test_list_item", test_list)  # fixture picks single item from the list
 def test_e2e(test_list_item, browser_instance):
     driver = browser_instance

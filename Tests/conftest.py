@@ -116,3 +116,6 @@ def pytest_runtest_makereport(item):
 
 def _capture_screenshot(file_name):
     driver.get_screenshot_as_file(file_name)
+
+
+# Parameterizing the test with multiple data sets using Dictionary

@@ -12,7 +12,7 @@ class ShopPage(BrowserUtils):
         self.shop_link = (By.CSS_SELECTOR, " a[href*='shop']")
         self.product_cards = (By.XPATH, "//div[@class='card h-100']")
         self.checkout_button = (By.CSS_SELECTOR, "a[class*='btn-primary']")
-        # self.checkout_button = (By.CSS_SELECTOR, "a[class*='btn-primary']")
+
 
     def add_product_to_cart(self, product_name):
 
