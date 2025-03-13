@@ -23,7 +23,7 @@ def setup(request):
 
     if browser_name == "chrome":
         options = webdriver.ChromeOptions()
-        # options.add_experimental_option("detach", True)
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
         driver = webdriver.Chrome(options=options)
         driver.implicitly_wait(5)
 
@@ -66,10 +66,9 @@ def browser_instance(request):
 
     if browser_name == "chrome":
         options = webdriver.ChromeOptions()
-        # options.add_experimental_option("detach", True)
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
         driver = webdriver.Chrome(options=options)
         driver.implicitly_wait(5)
-
 
     elif browser_name == "firefox":
         options = webdriver.FirefoxOptions()

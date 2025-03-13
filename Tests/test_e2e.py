@@ -21,6 +21,7 @@ class TestOne(BaseClass, unittest.TestCase):
 
         # creating homepage obj to pass driver as an argument
         home_page = HomePage(self.driver)
+        print(self.driver.title)
         check_out_page = home_page.shopItems()
         log.info("getting all the card titles")
         cards = check_out_page.getCardTitles()

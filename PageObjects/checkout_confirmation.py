@@ -32,5 +32,3 @@ class Checkout_Confirmation(BrowserUtils):
         successText = self.driver.find_element(*self.success_message).text
         assert "Success! Thank you!" in successText
 
-    def getTitle(self):
-        return self.driver.title
