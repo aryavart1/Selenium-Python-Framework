@@ -44,8 +44,10 @@ def setup(request):
 
     # passing driver obj from the class to the request instance and returning the driver obj
 
-    """ passing local driver from fixture to the class driver, if the class uses this fixture in that class if there is
-    a driver variable than the local driver will be assigned to it"""
+    """
+    passing local driver from fixture to the class driver, if the class uses this fixture in that class if there is
+    a driver variable than the local driver will be assigned to it
+    """
 
     request.cls.driver = driver  # passing driver from the fixture to the TC
 
@@ -88,13 +90,14 @@ def browser_instance(request):
     driver.close()  #post your test function execution
 
 
-@pytest.hookimpl( hookwrapper=True)
+
+
+@pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
     """
-        Extends the PyTest Plugin to take and embed screenshot in html report, whenever test fails.
-        :param item:
-        """
-    pytest_html = item.config.pluginmanager.getplugin( 'html' )
+    Extends the PyTest Plugin to take and embed a screenshot in the HTML report whenever a test fails.
+    """
+    pytest_html = item.config.pluginmanager.getplugin('html')
     outcome = yield
     report = outcome.get_result()
     extra = getattr(report, 'extra', [])
@@ -102,19 +105,35 @@ def pytest_runtest_makereport(item):
     if report.when == 'call' or report.when == "setup":
         xfail = hasattr(report, 'wasxfail')
         if (report.skipped and xfail) or (report.failed and not xfail):
-            reports_dir = os.path.join(os.path.dirname(__file__), 'reports' )
-            file_name = os.path.join(reports_dir, report.nodeid.replace("::", "_") + ".png")
-            print("file name is " + file_name)
-            _capture_screenshot(file_name)
-            if file_name:
-                html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
-                       'onclick="window.open(this.src)" align="right"/></div>' % file_name
-                extra.append(pytest_html.extras.html(html))
-        report.extras = extra
+            # Ensure the reports directory exists
+            reports_dir = os.path.join(os.path.dirname(__file__), 'reports')
+            if not os.path.exists(reports_dir):
+                os.makedirs(reports_dir)
 
+            # Create a screenshot filename and full path
+            screenshot_name = report.nodeid.replace("::", "_") + ".png"
+            file_path = os.path.join(reports_dir, os.path.basename(screenshot_name))
+
+            # Capture the screenshot
+            _capture_screenshot(file_path)
+
+            # Debugging output
+            print(f"Screenshot saved at: {file_path}")
+            print(f"File exists: {os.path.exists(file_path)}")
+
+            # Use just the filename for embedding in the HTML report
+            if os.path.exists(file_path):
+                relative_path = os.path.basename(file_path)
+                html = f'<div><img src="{relative_path}" alt="screenshot" style="width:304px;height:228px;" ' \
+                       'onclick="window.open(this.src)" align="right"/></div>'
+                extra.append(pytest_html.extras.html(html))
+
+            # Debug the HTML being added
+            print(f"HTML being added: {html}")
+
+        report.extra = extra
 
 def _capture_screenshot(file_name):
     driver.get_screenshot_as_file(file_name)
-
 
 # Parameterizing the test with multiple data sets using Dictionary

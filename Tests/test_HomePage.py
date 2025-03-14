@@ -25,8 +25,8 @@ class TestHomePage(BaseClass):
         # Refreshes the page to test new test values
         self.driver.refresh()
 
-    @pytest.fixture(params=[{"first_name": "ark", "last_name": "genesis", "gender": "Male"},
-                            {"first_name": "ark1", "last_name": "genesis_1", "gender": "Female"}])
+    @pytest.fixture(params=[{"first_name": "TEST_1", "last_name": "LN_1", "gender": "Male"},
+                            {"first_name": "TEST_2", "last_name": "LN_2", "gender": "Female"}])
     def getData(self, request):
         return request.param
 
