@@ -293,3 +293,24 @@ Success! Thank you! Your order will be delivered in next few weeks :-).
 2025-03-13 16:53:02,380 :INFO : test_e2e :Entering country name as ind
 2025-03-13 16:53:07,868 :INFO : test_e2e :Text received from application is ×
 Success! Thank you! Your order will be delivered in next few weeks :-).
+2025-03-13 17:30:55,463 :INFO : test_formSubmission :first name is ark
+2025-03-13 17:30:56,410 :INFO : test_formSubmission :first name is ark1
+2025-03-13 17:30:56,410 :INFO : test_formSubmission :first name is ark1
+2025-03-13 17:30:57,174 :INFO : test_e2e :getting all the card titles
+2025-03-13 17:30:57,225 :INFO : test_e2e :iphone X
+2025-03-13 17:30:57,238 :INFO : test_e2e :Samsung Note 8
+2025-03-13 17:30:57,267 :INFO : test_e2e :Nokia Edge
+2025-03-13 17:30:57,275 :INFO : test_e2e :Blackberry
+2025-03-13 17:30:59,515 :INFO : test_e2e :Entering country name as ind
+2025-03-13 17:31:04,946 :INFO : test_e2e :Text received from application is ×
+Success! Thank you! Your order will be delivered in next few weeks :-).
+2025-03-13 17:31:25,433 :INFO : test_formSubmission :first name is ark
+2025-03-13 17:31:25,674 :INFO : test_formSubmission :first name is ark1
+2025-03-13 17:31:26,816 :INFO : test_e2e :getting all the card titles
+2025-03-13 17:31:26,890 :INFO : test_e2e :iphone X
+2025-03-13 17:31:26,921 :INFO : test_e2e :Samsung Note 8
+2025-03-13 17:31:26,952 :INFO : test_e2e :Nokia Edge
+2025-03-13 17:31:26,964 :INFO : test_e2e :Blackberry
+2025-03-13 17:31:29,343 :INFO : test_e2e :Entering country name as ind
+2025-03-13 17:31:34,852 :INFO : test_e2e :Text received from application is ×
+Success! Thank you! Your order will be delivered in next few weeks :-).

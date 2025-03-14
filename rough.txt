@@ -15,3 +15,9 @@
     }
   ]
 }
+
+// Using xdist plugin to run multiple tests parallely
+https://pypi.org/project/pytest-xdist/
+
+// Using pytest-html plugin to generate HTML reports
+https://pypi.org/project/pytest-html/
