@@ -37,7 +37,7 @@ def test_e2e(test_list_item, browser_instance):  # passing fixture data and driv
 
     checkout_confirmation = shop_page.goToCart()
     checkout_confirmation.checkout()
-    checkout_confirmation.enter_delivery_address("xyz")
+    checkout_confirmation.enter_delivery_address("ind")
     checkout_confirmation.validate_order()
     print("Order is received")
 
